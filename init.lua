@@ -36,6 +36,8 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  'ojroques/nvim-osc52',
+
   -- Conjure
   'Olical/conjure',
 
@@ -238,6 +240,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -281,6 +284,11 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+
+-- Copy and paste
+vim.keymap.set('n', '<leader>y', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>yy', '<leader>y_', {remap = true})
+vim.keymap.set('v', '<leader>y', require('osc52').copy_operator, {expr = true})
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
