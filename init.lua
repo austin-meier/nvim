@@ -36,6 +36,7 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- OSC52 copying
   'ojroques/nvim-osc52',
 
   -- Conjure
@@ -46,6 +47,9 @@ require('lazy').setup({
   'tpope/vim-sexp-mappings-for-regular-people',
   'tpope/vim-repeat',
   'tpope/vim-surround',
+
+  -- Rainbow Parens
+  'HiPhish/rainbow-delimiters.nvim',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
