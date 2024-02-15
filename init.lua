@@ -2,7 +2,7 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = 'm'
+vim.g.maplocalleader = ','
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -287,8 +287,10 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Basic Keymaps ]]
+-- vim-sexp settigs
+vim.g.sexp_enable_insert_mode_mappings = 0
 
+-- [[ Basic Keymaps ]]
 -- Copy and paste
 vim.keymap.set('n', '<leader>y', require('osc52').copy_operator, {expr = true})
 vim.keymap.set('n', '<leader>yy', '<leader>y_', {remap = true})
