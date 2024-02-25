@@ -288,7 +288,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- vim-sexp settigs
-vim.g.sexp_enable_insert_mode_mappings = 0
+-- vim.g.sexp_enable_insert_mode_mappings = 0
 
 -- [[ Basic Keymaps ]]
 -- Copy and paste
@@ -554,15 +554,6 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
-    },
-  },
 }
 
 -- Setup neovim lua configuration
@@ -571,6 +562,11 @@ require('neodev').setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+require('lspconfig').clojure_lsp.setup{}
+require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').lua_ls.setup{}
+require('lspconfig').nil_ls.setup{}
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
