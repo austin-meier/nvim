@@ -331,6 +331,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    path_display={"smart"},
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -560,6 +561,33 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+}
+
+local roc = function ()
+  vim.cmd('set filetype=roc')
+  vim.lsp.start({
+    name = 'Roc Language Server',
+    cmd = {'roc_language_server'},
+    root_dir = vim.fs.dirname(vim.fs.find({'main.roc'}, { upward = true })[1]),
+  })
+end
+
+vim.api.nvim_create_user_command('RocLsp', roc, {})
+
+-- make .roc files have the correct filetype
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = { "*.roc" },
+  callback = roc
+})
+
+-- add roc tree-sitter
+local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+
+parsers.roc = {
+  install_info = {
+    url = "https://github.com/faldor20/tree-sitter-roc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
 }
 
 -- Setup neovim lua configuration
