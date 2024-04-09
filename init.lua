@@ -309,6 +309,11 @@ vim.o.termguicolors = true
 -- vim-sexp settigs
 vim.g.sexp_enable_insert_mode_mappings = 0
 
+-- Make 
+vim.opt.tabstop = 4;
+vim.opt.expandtab = true;
+vim.opt.shiftwidth = 4;
+
 -- [[ Basic Keymaps ]]
 -- Copy and paste
 vim.keymap.set('n', '<leader>y', require('osc52').copy_operator, {expr = true})
