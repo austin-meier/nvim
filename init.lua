@@ -72,7 +72,13 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
+      -- use opts = {} for passing setup options
+      -- this is equalent to setup({}) function
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -431,7 +437,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'clojure', 'fennel', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'bash', 'markdown' },
+    ensure_installed = { 'c', 'cpp', 'clojure', 'fennel', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'markdown' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
